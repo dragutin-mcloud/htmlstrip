@@ -1,2 +1,3 @@
-# htmlstrip
-HTML strip for Go
+# HTML strip for Go
+
+Strips HTML tags and return pure text
