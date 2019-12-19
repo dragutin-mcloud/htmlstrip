@@ -87,7 +87,7 @@ func alltoLowerCaseIterate(input []byte) []byte { // 2.26ms
 }
 
 func findOccurence(input []byte, find string, from int) int {
-	var f int = 0
+	var f int
 	for c := from; c < len(input); c++ {
 		f = 0
 		for c < len(input) && f < len(find) && input[c] == find[f] {
@@ -129,15 +129,19 @@ func removeBetweenStyle(input *[]byte) bool {
 
 /*
 Entry point for stripping html tags
- */
+It takes []byte slice and returns []byte slice, excellent for operations with files
+All characters are converted to lowercase in the process and new line is converted to single line
+*/
 func StripHTML(input []byte) []byte {
 	var charPoint int
 	var output []byte
 
 	input = alltoLowerCase(input) // Convert all to lowercase
-	for removeBetweenScript(&input) == true {
+
+	for removeBetweenScript(&input) == true { // Loop trought document for script blocks
 	}
-	for removeBetweenStyle(&input) == true {
+
+	for removeBetweenStyle(&input) == true { // Loop trought document for style blocks
 	}
 
 	for charPoint = 0; charPoint < len(input); charPoint++ {

@@ -146,4 +146,3 @@ func TestStrip16(t *testing.T) {
 		t.Fail()
 	}
 }
-
