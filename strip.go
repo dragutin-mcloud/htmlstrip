@@ -138,10 +138,10 @@ func StripHTML(input []byte) []byte {
 
 	input = alltoLowerCase(input) // Convert all to lowercase
 
-	for removeBetweenScript(&input) == true { // Loop trought document for script blocks
+	for removeBetweenScript(&input) == true { // Loop through document for script blocks
 	}
 
-	for removeBetweenStyle(&input) == true { // Loop trought document for style blocks
+	for removeBetweenStyle(&input) == true { // Loop through document for style blocks
 	}
 
 	for charPoint = 0; charPoint < len(input); charPoint++ {
