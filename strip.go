@@ -128,7 +128,7 @@ func removeBetweenStyle(input *[]byte) bool {
 }
 
 /*
-Entry point for stripping html tags
+StripHTML is entry point for stripping html tags
 It takes []byte slice and returns []byte slice, excellent for operations with files
 All characters are converted to lowercase in the process and new line is converted to single line
 */
