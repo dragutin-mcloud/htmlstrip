@@ -90,7 +90,7 @@ func findOccurence(input []byte, find string, from int) int {
 	var f int = 0
 	for c := from; c < len(input); c++ {
 		f = 0
-		for c<len(input) && f < len(find) && input[c] == find[f] {
+		for c < len(input) && f < len(find) && input[c] == find[f] {
 			f++
 			c++
 		}
@@ -101,7 +101,7 @@ func findOccurence(input []byte, find string, from int) int {
 	return -1
 }
 
-func removeBetweenScript(input *[]byte) (bool) {
+func removeBetweenScript(input *[]byte) bool {
 	find1 := findOccurence(*input, "<script", 0)
 	if find1 < 0 {
 		return false
@@ -114,7 +114,7 @@ func removeBetweenScript(input *[]byte) (bool) {
 	return true
 }
 
-func removeBetweenStyle(input *[]byte) (bool) {
+func removeBetweenStyle(input *[]byte) bool {
 	find1 := findOccurence(*input, "<style", 0)
 	if find1 < 0 {
 		return false
@@ -127,14 +127,17 @@ func removeBetweenStyle(input *[]byte) (bool) {
 	return true
 }
 
+/*
+Entry point for stripping html tags
+ */
 func StripHTML(input []byte) []byte {
 	var charPoint int
 	var output []byte
 
-	input = alltoLowerCase(input)	// Convert all to lowercase
-	for removeBetweenScript(&input)==true {
+	input = alltoLowerCase(input) // Convert all to lowercase
+	for removeBetweenScript(&input) == true {
 	}
-	for removeBetweenStyle(&input)==true {
+	for removeBetweenStyle(&input) == true {
 	}
 
 	for charPoint = 0; charPoint < len(input); charPoint++ {
@@ -165,7 +168,7 @@ func StripHTML(input []byte) []byte {
 		default:
 		}
 		if input[charPoint] == ' ' && len(output) > 0 && output[len(output)-1] == ' ' {
-			continue;
+			continue
 		}
 		output = append(output, input[charPoint])
 	}
